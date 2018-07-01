@@ -12,6 +12,7 @@ import java.io.File;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
 /**
@@ -104,7 +105,15 @@ public class Fetcher {
                     }
                 }
             });
-            Observable<JsonObject> networkObservable = ApiHandler.getApiService().commonGet(url);
+            Observable<JsonObject> networkObservable = ApiHandler.getApiService().commonGet(url)
+                    .doOnNext(new Consumer<JsonObject>() {
+                        @Override
+                        public void accept(JsonObject jsonObject) throws Exception {
+                            File file = FileUtil.getCachedFile(context, url);
+                            String json = jsonObject.toString();
+                            FileUtil.StringToFile(json, file, "utf-8");
+                        }
+                    });
             return Observable.concat(cacheObservable, networkObservable);
         }
     }
@@ -131,7 +140,15 @@ public class Fetcher {
                     e.onComplete();
                 }
             });
-            Observable<JsonObject> networkObservable = ApiHandler.getApiService().commonGet(url);
+            Observable<JsonObject> networkObservable = ApiHandler.getApiService().commonGet(url)
+                    .doOnNext(new Consumer<JsonObject>() {
+                        @Override
+                        public void accept(JsonObject jsonObject) throws Exception {
+                            File file = FileUtil.getCachedFile(context, url);
+                            String json = jsonObject.toString();
+                            FileUtil.StringToFile(json, file, "utf-8");
+                        }
+                    });
             return Observable.concat(cacheObservable, networkObservable);
         }
     }
