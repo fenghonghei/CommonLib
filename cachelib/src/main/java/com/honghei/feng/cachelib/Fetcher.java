@@ -28,6 +28,10 @@ public class Fetcher {
         this.context = context;
     }
 
+    public <T> Observable<T> fetchData(String url, Class<T> tClass) {
+        return fetchData(url, tClass, CacheStrategy.NONE_CACHE);
+    }
+
     public <T> Observable<T> fetchData(String url, Class<T> tClass, int cacheStrategy) {
         return fetchData(url, tClass, cacheStrategy, 0);
 
