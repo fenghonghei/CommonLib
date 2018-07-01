@@ -21,7 +21,7 @@ public class ApiHandler {
 
     private static ApiService creteApiService() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://fenghonghei.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

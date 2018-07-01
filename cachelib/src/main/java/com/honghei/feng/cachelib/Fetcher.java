@@ -1,6 +1,7 @@
 package com.honghei.feng.cachelib;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -19,6 +20,7 @@ import io.reactivex.functions.Function;
  * 支持且仅支持get请求的缓存策略
  */
 public class Fetcher {
+    private static final String TAG = "Fetcher";
 
     private Context context;
 
@@ -26,12 +28,20 @@ public class Fetcher {
         this.context = context;
     }
 
-    public <T> Observable<T> fetchData(String url, final Class<T> tClass, int cacheStrategy) {
+    public <T> Observable<T> fetchData(String url, Class<T> tClass, int cacheStrategy) {
+        return fetchData(url, tClass, cacheStrategy, 0);
+
+    }
+
+    public <T> Observable<T> fetchData(String url, final Class<T> tClass, int cacheStrategy, long expireTime) {
         Observable<JsonObject> observable;
         if (cacheStrategy == CacheStrategy.NONE_CACHE) {
             observable = new NoneCache().fetchData(url);
         } else if (cacheStrategy == CacheStrategy.EXPIRE_CACHE) {
-            throw new IllegalArgumentException(" expire cacheStrategy must have expire time");
+            if (expireTime <= 0) {
+                throw new IllegalArgumentException(" expire time must > 0");
+            }
+            observable = new ExpireCache(context, expireTime).fetchData(url);
         } else if (cacheStrategy == CacheStrategy.UPDATE_CACHE) {
             observable = new UpdateCache(context).fetchData(url);
         } else {
@@ -44,18 +54,6 @@ public class Fetcher {
                 return gson.fromJson(jsonObject, tClass);
             }
         });
-
-    }
-
-    public <T> Observable<T> fetchData(String url, final Class<T> tClass, long expireTime) {
-        return new ExpireCache(context, expireTime).fetchData(url)
-                .map(new Function<JsonObject, T>() {
-                    @Override
-                    public T apply(JsonObject jsonObject) throws Exception {
-                        Gson gson = new Gson();
-                        return gson.fromJson(jsonObject, tClass);
-                    }
-                });
 
     }
 
@@ -97,6 +95,7 @@ public class Fetcher {
                 public void subscribe(ObservableEmitter<JsonObject> e) throws Exception {
                     File file = FileUtil.getCachedFile(context, url);
                     if (file.exists() && !FileUtil.isFileExpired(file, expireTime)) {
+                        Log.e(TAG, "fetch from cache");
                         String json = FileUtil.FileToString(file, "utf-8");
                         JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
                         e.onNext(jsonObject);
@@ -109,6 +108,7 @@ public class Fetcher {
                     .doOnNext(new Consumer<JsonObject>() {
                         @Override
                         public void accept(JsonObject jsonObject) throws Exception {
+                            Log.e(TAG, "fetch from network");
                             File file = FileUtil.getCachedFile(context, url);
                             String json = jsonObject.toString();
                             FileUtil.StringToFile(json, file, "utf-8");
@@ -133,6 +133,7 @@ public class Fetcher {
                 public void subscribe(ObservableEmitter<JsonObject> e) throws Exception {
                     File file = FileUtil.getCachedFile(context, url);
                     if (file.exists()) {
+                        Log.e(TAG, "fetch from cache");
                         String json = FileUtil.FileToString(file, "utf-8");
                         JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
                         e.onNext(jsonObject);
@@ -144,6 +145,7 @@ public class Fetcher {
                     .doOnNext(new Consumer<JsonObject>() {
                         @Override
                         public void accept(JsonObject jsonObject) throws Exception {
+                            Log.e(TAG, "fetch from network");
                             File file = FileUtil.getCachedFile(context, url);
                             String json = jsonObject.toString();
                             FileUtil.StringToFile(json, file, "utf-8");
