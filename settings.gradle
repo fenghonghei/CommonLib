@@ -1,1 +1,1 @@
-include ':app', ':cachelib'
+include ':app', ':cachelib', ':utilslib', ':utilslib'
