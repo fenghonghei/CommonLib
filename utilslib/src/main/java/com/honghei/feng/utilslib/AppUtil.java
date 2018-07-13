@@ -8,6 +8,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.os.Looper;
 import java.util.List;
 
 /**
@@ -51,6 +52,10 @@ public class AppUtil {
       }
     }
     return false;
+  }
+
+  public static boolean isMainThread() {
+    return Looper.myLooper() == Looper.getMainLooper();
   }
 
   public static AppInfo getAppInfo() {

@@ -1,11 +1,9 @@
 package com.honghei.feng.commonlib;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-
+import android.support.v7.app.AppCompatActivity;
 import com.honghei.feng.cachelib.Fetcher;
-
+import com.honghei.feng.utilslib.Logger;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -26,18 +24,18 @@ public class MainActivity extends AppCompatActivity {
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
-                        Log.e(TAG, "doOnSubscribe");
+                        Logger.eTag(TAG, "doOnSubscribe");
                     }
                 })
                 .subscribe(new Consumer<Weather>() {
                     @Override
                     public void accept(Weather weather) throws Exception {
-                        Log.e(TAG, "data: " + weather.toString());
+                      Logger.eTag(TAG, "data: " + weather.toString());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Log.e(TAG, "throwable: " + throwable.getMessage());
+                      Logger.eTag(TAG, "throwable: " + throwable.getMessage());
                     }
                 });
 
