@@ -1,4 +1,4 @@
-package com.honghei.feng.utilslib;
+package com.honghei.feng.utilslib.constant;
 
 import android.support.annotation.IntDef;
 import java.lang.annotation.Retention;

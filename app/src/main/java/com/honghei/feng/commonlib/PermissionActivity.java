@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
 import com.honghei.feng.utilslib.Logger;
 import com.honghei.feng.utilslib.PermissionUtil;
 import com.honghei.feng.utilslib.PermissionUtil.OnPermissionRequestListener;
-import com.yanzhenjie.permission.Permission;
+import com.honghei.feng.utilslib.constant.PermissionConstant;
+
 import java.util.List;
 
 /**
@@ -17,29 +19,29 @@ import java.util.List;
  */
 public class PermissionActivity extends AppCompatActivity {
 
-  private static final String TAG = "PermissionActivity";
+    private static final String TAG = "PermissionActivity";
 
-  @Override
-  protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_permission);
-  }
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_permission);
+    }
 
-  public void openEssentialCamera(View view) {
-    PermissionUtil.requestEssentialPermission(this, Permission.CAMERA);
-  }
+    public void openEssentialCamera(View view) {
+        PermissionUtil.requestEssentialPermission(this, PermissionConstant.CAMERA);
+    }
 
-  public void openCamera(View view) {
-    PermissionUtil.requestPermission(this, new OnPermissionRequestListener() {
-      @Override
-      public void onGranted(List<String> permissions) {
-        Logger.e("onGranted");
-      }
+    public void openCamera(View view) {
+        PermissionUtil.requestPermission(this, new OnPermissionRequestListener() {
+            @Override
+            public void onGranted(List<String> permissions) {
+                Logger.e("onGranted");
+            }
 
-      @Override
-      public void onDenied(List<String> permissions) {
-        Logger.e("onDenied");
-      }
-    }, Permission.CAMERA);
-  }
+            @Override
+            public void onDenied(List<String> permissions) {
+                Logger.e("onDenied");
+            }
+        }, PermissionConstant.CAMERA);
+    }
 }
