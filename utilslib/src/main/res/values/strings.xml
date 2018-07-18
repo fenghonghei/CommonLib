@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">UtilsLib</string>
+  <string name="dialog_title_permission">权限提醒</string>
 </resources>
