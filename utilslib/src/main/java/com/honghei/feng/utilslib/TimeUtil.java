@@ -2,6 +2,9 @@ package com.honghei.feng.utilslib;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
+
+import com.honghei.feng.utilslib.constant.TimeConstant;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -7,7 +7,7 @@ import android.view.View;
 import com.honghei.feng.utilslib.Logger;
 import com.honghei.feng.utilslib.PermissionUtil;
 import com.honghei.feng.utilslib.PermissionUtil.OnPermissionRequestListener;
-import com.yanzhenjie.permission.Permission;
+import com.honghei.feng.utilslib.constant.PermissionConstant;
 import java.util.List;
 
 /**
@@ -26,7 +26,7 @@ public class PermissionActivity extends AppCompatActivity {
   }
 
   public void essentialRequest(View view) {
-    PermissionUtil.requestEssentialPermission(this, Permission.CAMERA);
+    PermissionUtil.requestEssentialPermission(this, PermissionConstant.CAMERA);
   }
 
   public void normalRequest(View view) {
@@ -40,6 +40,6 @@ public class PermissionActivity extends AppCompatActivity {
       public void onDenied(List<String> permissions) {
         Logger.e("onDenied");
       }
-    }, Permission.CAMERA);
+    }, PermissionConstant.CAMERA);
   }
 }
