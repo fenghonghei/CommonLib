@@ -25,11 +25,11 @@ public class PermissionActivity extends AppCompatActivity {
     setContentView(R.layout.activity_permission);
   }
 
-  public void openEssentialCamera(View view) {
+  public void essentialRequest(View view) {
     PermissionUtil.requestEssentialPermission(this, Permission.CAMERA);
   }
 
-  public void openCamera(View view) {
+  public void normalRequest(View view) {
     PermissionUtil.requestPermission(this, new OnPermissionRequestListener() {
       @Override
       public void onGranted(List<String> permissions) {
