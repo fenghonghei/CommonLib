@@ -1,4 +1,4 @@
-package com.honghei.feng.utilslib.constant;
+package com.honghei.feng.utillib.constant;
 
 /**
  * author : feng

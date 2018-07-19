@@ -1,4 +1,4 @@
-package com.honghei.feng.utilslib;
+package com.honghei.feng.utillib;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;

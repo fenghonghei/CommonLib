@@ -1,6 +1,6 @@
-package com.honghei.feng.utilslib;
+package com.honghei.feng.utillib;
 
-import com.honghei.feng.utilslib.constant.RegexConstant;
+import com.honghei.feng.utillib.constant.RegexConstant;
 
 import java.util.ArrayList;
 import java.util.Collections;

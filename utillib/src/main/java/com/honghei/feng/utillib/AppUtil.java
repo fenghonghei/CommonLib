@@ -1,4 +1,4 @@
-package com.honghei.feng.utilslib;
+package com.honghei.feng.utillib;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;

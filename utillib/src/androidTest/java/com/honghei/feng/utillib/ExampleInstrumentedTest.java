@@ -1,4 +1,4 @@
-package com.honghei.feng.utilslib;
+package com.honghei.feng.utillib;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
