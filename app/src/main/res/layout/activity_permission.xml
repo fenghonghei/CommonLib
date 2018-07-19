@@ -8,7 +8,7 @@
     android:id="@+id/bt_essential"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="essentialRequest"
+    android:text="必要请求"
     android:onClick="essentialRequest"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
@@ -16,7 +16,7 @@
   <Button
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="normalRequest"
+    android:text="普通请求"
     android:onClick="normalRequest"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"

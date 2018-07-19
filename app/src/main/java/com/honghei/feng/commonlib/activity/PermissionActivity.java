@@ -1,9 +1,10 @@
-package com.honghei.feng.commonlib;
+package com.honghei.feng.commonlib.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import com.honghei.feng.commonlib.R;
 import com.honghei.feng.utilslib.Logger;
 import com.honghei.feng.utilslib.PermissionUtil;
 import com.honghei.feng.utilslib.PermissionUtil.OnPermissionRequestListener;
