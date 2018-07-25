@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.honghei.feng.commonlib.R;
-import com.honghei.feng.utillib.Logger;
-import com.honghei.feng.utillib.PermissionUtil;
-import com.honghei.feng.utillib.PermissionUtil.OnPermissionRequestListener;
+import com.honghei.feng.utillib.util.Logger;
+import com.honghei.feng.utillib.util.PermissionUtil;
+import com.honghei.feng.utillib.util.PermissionUtil.OnPermissionRequestListener;
 import com.honghei.feng.utillib.constant.PermissionConstant;
 import java.util.List;
 

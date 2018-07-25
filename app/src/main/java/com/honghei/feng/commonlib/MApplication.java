@@ -1,7 +1,7 @@
 package com.honghei.feng.commonlib;
 
 import android.app.Application;
-import com.honghei.feng.utillib.AppUtil;
+import com.honghei.feng.utillib.util.AppUtil;
 
 /**
  * author : feng

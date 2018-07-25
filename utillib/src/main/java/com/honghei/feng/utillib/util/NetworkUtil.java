@@ -1,4 +1,4 @@
-package com.honghei.feng.utillib;
+package com.honghei.feng.utillib.util;
 
 import static android.Manifest.permission.ACCESS_NETWORK_STATE;
 import static android.Manifest.permission.ACCESS_WIFI_STATE;

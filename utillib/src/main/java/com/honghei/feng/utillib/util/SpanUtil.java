@@ -1,4 +1,4 @@
-package com.honghei.feng.utillib;
+package com.honghei.feng.utillib.util;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
