@@ -1,5 +1,7 @@
 package com.honghei.feng.utillib.http;
 
+import static com.honghei.feng.utillib.constant.HttpConstant.VALID_RESPONSE;
+
 import com.google.gson.JsonObject;
 
 /**
@@ -8,8 +10,6 @@ import com.google.gson.JsonObject;
  * creation time : 18-7-25上午10:18
  */
 public class HttpResponse {
-
-  private static final int VALID_RESPONSE = 200;
 
   private int code;
   private String message;
