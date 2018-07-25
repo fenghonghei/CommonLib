@@ -9,6 +9,8 @@ import com.google.gson.JsonObject;
  */
 public class HttpResponse {
 
+  private static final int VALID_RESPONSE = 200;
+
   private int code;
   private String message;
   private JsonObject jsonObject;
@@ -35,5 +37,9 @@ public class HttpResponse {
 
   public void setJsonObject(JsonObject jsonObject) {
     this.jsonObject = jsonObject;
+  }
+
+  public boolean isValidResponse() {
+    return code == VALID_RESPONSE;
   }
 }
