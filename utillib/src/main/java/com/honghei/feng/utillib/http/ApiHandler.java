@@ -1,8 +1,8 @@
 package com.honghei.feng.utillib.http;
 
+import com.honghei.feng.utillib.http.converter.HttpGsonConverterFactory;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * author : feng
@@ -33,7 +33,7 @@ public class ApiHandler {
   private void initDefaultRetrofit() {
     retrofit = new Retrofit.Builder()
         .baseUrl("http://fenghonghei.com/")
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(HttpGsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build();
   }

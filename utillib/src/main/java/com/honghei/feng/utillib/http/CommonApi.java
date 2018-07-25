@@ -18,5 +18,5 @@ public interface CommonApi {
   Observable<HttpResponse> commonGet(@Url String url);
 
   @POST
-  Observable<HttpResponse> commonPost(@Url String url, @Body RequestBody requestBody);
+  <T> Observable<HttpResponse> commonPost(@Url String url, @Body T t);
 }
