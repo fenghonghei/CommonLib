@@ -1,8 +1,7 @@
 package com.honghei.feng.utillib.http;
 
-import static com.honghei.feng.utillib.constant.HttpConstant.VALID_RESPONSE;
-
 import com.google.gson.JsonObject;
+import com.honghei.feng.utillib.constant.HttpConstant;
 
 /**
  * author : feng
@@ -13,7 +12,7 @@ public class HttpResponse {
 
   private int code;
   private String message;
-  private JsonObject jsonObject;
+  private JsonObject data;
 
   public int getCode() {
     return code;
@@ -31,15 +30,15 @@ public class HttpResponse {
     this.message = message;
   }
 
-  public JsonObject getJsonObject() {
-    return jsonObject;
+  public JsonObject getData() {
+    return data;
   }
 
-  public void setJsonObject(JsonObject jsonObject) {
-    this.jsonObject = jsonObject;
+  public void setData(JsonObject data) {
+    this.data = data;
   }
 
   public boolean isValidResponse() {
-    return code == VALID_RESPONSE;
+    return code == HttpConstant.VALID_RESPONSE;
   }
 }
