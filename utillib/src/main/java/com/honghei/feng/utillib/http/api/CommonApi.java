@@ -1,7 +1,6 @@
-package com.honghei.feng.utillib.http;
+package com.honghei.feng.utillib.http.api;
 
 import io.reactivex.Observable;
-import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
