@@ -6,15 +6,15 @@ import retrofit2.HttpException;
 
 /**
  * author : feng
- * description ： 异常处理器
+ * description ： 异常处理器代理
  * creation time : 18-7-25下午7:01
  */
-public class ExceptionHandler {
+public class HttpHandleProxy {
 
-  private IHttpHelper httpHelper;
+  private IHttpHandle httpHandle;
 
-  public ExceptionHandler(IHttpHelper httpHelper) {
-    this.httpHelper = httpHelper;
+  public HttpHandleProxy(IHttpHandle httpHandle) {
+    this.httpHandle = httpHandle;
   }
 
   public void handler(Throwable throwable) {
@@ -29,14 +29,14 @@ public class ExceptionHandler {
   }
 
   private void handleIOException() {
-    httpHelper.onIOException();
+    httpHandle.onIOException();
   }
 
   private void handleHttpException(HttpException e) {
-    httpHelper.onHttpException(e);
+    httpHandle.onHttpException(e);
   }
 
   private void handleApiException(ApiException e) {
-    httpHelper.onApiException(e);
+    httpHandle.onApiException(e);
   }
 }
