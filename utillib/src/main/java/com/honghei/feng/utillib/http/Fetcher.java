@@ -1,10 +1,11 @@
-package com.honghei.feng.utillib.http.cache;
+package com.honghei.feng.utillib.http;
 
 import com.google.gson.Gson;
-import com.honghei.feng.utillib.http.HttpResponse;
-import com.honghei.feng.utillib.http.cache.CacheStrategy.ExpireCache;
-import com.honghei.feng.utillib.http.cache.CacheStrategy.NoneCache;
-import com.honghei.feng.utillib.http.cache.CacheStrategy.UpdateCache;
+import com.honghei.feng.utillib.http.api.HttpResponse;
+import com.honghei.feng.utillib.http.cache.CacheStrategy;
+import com.honghei.feng.utillib.http.cache.ExpireCache;
+import com.honghei.feng.utillib.http.cache.NoneCache;
+import com.honghei.feng.utillib.http.cache.UpdateCache;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 

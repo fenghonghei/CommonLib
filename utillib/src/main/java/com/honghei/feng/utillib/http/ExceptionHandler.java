@@ -1,5 +1,6 @@
 package com.honghei.feng.utillib.http;
 
+import com.honghei.feng.utillib.http.api.ApiException;
 import java.io.IOException;
 import retrofit2.HttpException;
 
@@ -8,11 +9,11 @@ import retrofit2.HttpException;
  * description ： 异常处理器
  * creation time : 18-7-25下午7:01
  */
-public class HttpExceptionHandler {
+public class ExceptionHandler {
 
-  private HttpHelper httpHelper;
+  private IHttpHelper httpHelper;
 
-  public HttpExceptionHandler(HttpHelper httpHelper) {
+  public ExceptionHandler(IHttpHelper httpHelper) {
     this.httpHelper = httpHelper;
   }
 
