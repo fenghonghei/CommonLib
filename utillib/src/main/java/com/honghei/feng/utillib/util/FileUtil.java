@@ -1,6 +1,7 @@
 package com.honghei.feng.utillib.util;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileFilter;
@@ -27,6 +28,16 @@ public class FileUtil {
 
   private FileUtil() {
     throw new UnsupportedOperationException("u can't instantiate me...");
+  }
+
+  public static File getCachedFile(String url) {
+    return new File(AppUtil.getApp().getCacheDir(), MD5Util.md5(url));
+  }
+
+  public static boolean isFileExpired(File file, long expiredTime) {
+    long current = System.currentTimeMillis();
+    long lastModify = file.lastModified();
+    return current - lastModify > expiredTime;
   }
 
   /**
