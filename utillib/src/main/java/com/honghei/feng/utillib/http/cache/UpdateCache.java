@@ -26,7 +26,7 @@ public class UpdateCache implements CacheStrategy {
       public void subscribe(ObservableEmitter<HttpResponse> e) throws Exception {
         File file = FileUtil.getCachedFile(url);
         if (FileUtil.isFileExists(file)) {
-          Logger.i("fetch from cache");
+          Logger.e("fetch from cache");
           String json = FileIOUtil.readFile2String(file);
           HttpResponse httpResponse = new Gson().fromJson(json, HttpResponse.class);
           e.onNext(httpResponse);
@@ -39,7 +39,7 @@ public class UpdateCache implements CacheStrategy {
         .doOnNext(new Consumer<HttpResponse>() {
           @Override
           public void accept(HttpResponse httpResponse) throws Exception {
-            Logger.i("fetch from network");
+            Logger.e("fetch from network");
             File file = FileUtil.getCachedFile(url);
             String json = new Gson().toJson(httpResponse);
             FileIOUtil.writeFileFromString(file, json);
