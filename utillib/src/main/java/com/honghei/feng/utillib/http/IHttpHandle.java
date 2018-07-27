@@ -10,9 +10,9 @@ import retrofit2.HttpException;
  */
 public interface IHttpHandle {
 
-  void onStart();
+  void onStartRequest();
 
-  void onComplete();
+  void onCompleteRequest();
 
   void onIOException();
 

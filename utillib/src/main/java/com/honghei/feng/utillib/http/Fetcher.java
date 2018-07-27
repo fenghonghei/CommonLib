@@ -16,16 +16,16 @@ import io.reactivex.functions.Function;
  */
 public class Fetcher {
 
-  public static <T> Observable<T> fetchData(String url, Class<T> tClass) {
-    return fetchData(url, tClass, CacheStrategy.NONE_CACHE);
+  public static Observable<HttpResponse> fetchData(String url) {
+    return fetchData(url, CacheStrategy.NONE_CACHE);
   }
 
-  public static <T> Observable<T> fetchData(String url, Class<T> tClass, int cacheStrategy) {
-    return fetchData(url, tClass, cacheStrategy, 0);
+  public static Observable<HttpResponse> fetchData(String url, int cacheStrategy) {
+    return fetchData(url, cacheStrategy, 0);
 
   }
 
-  public static <T> Observable<T> fetchData(String url, final Class<T> tClass, int cacheStrategy, long expireTime) {
+  public static Observable<HttpResponse> fetchData(String url, int cacheStrategy, long expireTime) {
     Observable<HttpResponse> observable;
     if (cacheStrategy == CacheStrategy.NONE_CACHE) {
       observable = new NoneCache().fetchData(url);
@@ -39,12 +39,6 @@ public class Fetcher {
     } else {
       throw new IllegalArgumentException(" expire cacheStrategy must be none update or expire cache");
     }
-    return observable.map(new Function<HttpResponse, T>() {
-      @Override
-      public T apply(HttpResponse httpResponse) throws Exception {
-        Gson gson = new Gson();
-        return gson.fromJson(httpResponse.getData(), tClass);
-      }
-    });
+    return observable;
   }
 }

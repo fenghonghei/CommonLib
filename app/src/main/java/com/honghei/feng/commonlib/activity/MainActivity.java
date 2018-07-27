@@ -19,4 +19,8 @@ public class MainActivity extends AppCompatActivity {
   public void testPermission(View view) {
     startActivity(new Intent(this, PermissionActivity.class));
   }
+
+  public void testHttp(View view) {
+    startActivity(new Intent(this, HttpActivity.class));
+  }
 }

@@ -1,6 +1,6 @@
 package com.honghei.feng.utillib.http.api;
 
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 import com.honghei.feng.utillib.constant.HttpConstant;
 
 /**
@@ -10,35 +10,35 @@ import com.honghei.feng.utillib.constant.HttpConstant;
  */
 public class HttpResponse {
 
-  private int code;
-  private String message;
-  private JsonObject data;
+  private int errorCode;
+  private String errorMsg;
+  private JsonElement data;
 
   public int getCode() {
-    return code;
+    return errorCode;
   }
 
   public void setCode(int code) {
-    this.code = code;
+    this.errorCode = code;
   }
 
   public String getMessage() {
-    return message;
+    return errorMsg;
   }
 
   public void setMessage(String message) {
-    this.message = message;
+    this.errorMsg = message;
   }
 
-  public JsonObject getData() {
+  public JsonElement getData() {
     return data;
   }
 
-  public void setData(JsonObject data) {
+  public void setData(JsonElement data) {
     this.data = data;
   }
 
   public boolean isValidResponse() {
-    return code == HttpConstant.VALID_RESPONSE;
+    return errorCode == HttpConstant.VALID_RESPONSE;
   }
 }
