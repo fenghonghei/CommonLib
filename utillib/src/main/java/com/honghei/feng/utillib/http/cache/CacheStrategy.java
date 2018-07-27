@@ -5,7 +5,7 @@ import io.reactivex.Observable;
 
 /**
  * author : feng
- * description ： 缓存策略
+ * description ： 缓存策略，支持且仅支持get请求
  * creation time : 18-7-26上午9:28
  */
 public interface CacheStrategy {
