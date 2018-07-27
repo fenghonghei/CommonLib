@@ -9,6 +9,7 @@ import com.honghei.feng.utillib.http.Fetcher;
 import com.honghei.feng.utillib.http.HttpHandleProxy;
 import com.honghei.feng.utillib.http.IHttpHandle;
 import com.honghei.feng.utillib.http.api.ApiException;
+import com.honghei.feng.utillib.http.api.ApiHandler;
 import com.honghei.feng.utillib.http.api.HttpResponse;
 import com.honghei.feng.utillib.http.cache.CacheStrategy;
 import com.honghei.feng.utillib.util.Logger;
@@ -16,6 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import java.util.HashMap;
 import retrofit2.HttpException;
 
 /**
@@ -109,6 +111,35 @@ public class HttpActivity extends AppCompatActivity implements IHttpHandle {
         });
   }
 
+  public void postForm(View view) {
+    String url = "http://www.wanandroid.com/user/register";
+    HashMap<String, String> params = new HashMap<>();
+    params.put("username", "httptest");
+    params.put("password", "httptest");
+    params.put("repassword", "httptest");
+    Disposable postJsonDisposable = ApiHandler.getInstance().getCommonApi().commonPost(url, params)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnSubscribe(new Consumer<Disposable>() {
+          @Override
+          public void accept(Disposable disposable) throws Exception {
+            onStartRequest();
+          }
+        })
+        .subscribe(new Consumer<HttpResponse>() {
+          @Override
+          public void accept(HttpResponse httpResponse) throws Exception {
+            onCompleteRequest();
+            Logger.e(httpResponse.getData().toString());
+          }
+        }, new Consumer<Throwable>() {
+          @Override
+          public void accept(Throwable throwable) throws Exception {
+            httpHandleProxy.handler(throwable);
+          }
+        });
+
+  }
 
   @Override
   public void onStartRequest() {
@@ -134,4 +165,6 @@ public class HttpActivity extends AppCompatActivity implements IHttpHandle {
   public void onApiException(ApiException e) {
     Logger.e("onApiException: " + e.getErrorCode() + "--" + e.getMessage());
   }
+
+
 }

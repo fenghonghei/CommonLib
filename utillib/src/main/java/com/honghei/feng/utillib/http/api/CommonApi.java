@@ -1,5 +1,6 @@
 package com.honghei.feng.utillib.http.api;
 
+import com.google.gson.JsonElement;
 import io.reactivex.Observable;
 import java.util.Map;
 import retrofit2.http.Body;
@@ -20,7 +21,7 @@ public interface CommonApi {
   Observable<HttpResponse> commonGet(@Url String url);
 
   @POST
-  <T> Observable<HttpResponse> commonPost(@Url String url, @Body T t);
+  Observable<HttpResponse> commonPost(@Url String url, @Body JsonElement jsonElement);
 
   @FormUrlEncoded
   @POST
