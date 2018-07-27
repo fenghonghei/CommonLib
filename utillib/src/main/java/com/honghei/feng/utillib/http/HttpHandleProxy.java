@@ -1,6 +1,7 @@
 package com.honghei.feng.utillib.http;
 
 import com.honghei.feng.utillib.http.api.ApiException;
+import com.honghei.feng.utillib.util.Logger;
 import java.io.IOException;
 import retrofit2.HttpException;
 
@@ -25,6 +26,8 @@ public class HttpHandleProxy {
       handleHttpException((HttpException) throwable);
     } else if (throwable instanceof ApiException) {
       handleApiException((ApiException) throwable);
+    } else {
+      Logger.e(throwable.toString());
     }
   }
 

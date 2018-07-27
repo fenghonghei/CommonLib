@@ -7,5 +7,5 @@ package com.honghei.feng.utillib.constant;
  */
 public class HttpConstant {
 
-  public static final int VALID_RESPONSE = 200;
+  public static final int VALID_RESPONSE = 0;
 }
