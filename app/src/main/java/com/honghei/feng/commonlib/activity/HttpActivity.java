@@ -10,6 +10,7 @@ import com.honghei.feng.utillib.http.HttpHandleProxy;
 import com.honghei.feng.utillib.http.IHttpHandle;
 import com.honghei.feng.utillib.http.api.ApiException;
 import com.honghei.feng.utillib.http.api.HttpResponse;
+import com.honghei.feng.utillib.http.cache.CacheStrategy;
 import com.honghei.feng.utillib.util.Logger;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -59,9 +60,53 @@ public class HttpActivity extends AppCompatActivity implements IHttpHandle {
   }
 
   public void getWithCacheExpire(View view) {
+    String url = "http://www.wanandroid.com/banner/json";
+    Disposable cacheExpireDisposable = Fetcher.fetchData(url, CacheStrategy.EXPIRE_CACHE, 1000 * 60)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnSubscribe(new Consumer<Disposable>() {
+          @Override
+          public void accept(Disposable disposable) throws Exception {
+            onStartRequest();
+          }
+        })
+        .subscribe(new Consumer<HttpResponse>() {
+          @Override
+          public void accept(HttpResponse httpResponse) throws Exception {
+            onCompleteRequest();
+            Logger.e(httpResponse.getData().toString());
+          }
+        }, new Consumer<Throwable>() {
+          @Override
+          public void accept(Throwable throwable) throws Exception {
+            httpHandleProxy.handler(throwable);
+          }
+        });
   }
 
   public void getWithCacheUpdate(View view) {
+    String url = "http://www.wanandroid.com//hotkey/json";
+    Disposable updateCacheDisposable = Fetcher.fetchData(url, CacheStrategy.UPDATE_CACHE)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnSubscribe(new Consumer<Disposable>() {
+          @Override
+          public void accept(Disposable disposable) throws Exception {
+            onStartRequest();
+          }
+        })
+        .subscribe(new Consumer<HttpResponse>() {
+          @Override
+          public void accept(HttpResponse httpResponse) throws Exception {
+            onCompleteRequest();
+            Logger.e(httpResponse.getData().toString());
+          }
+        }, new Consumer<Throwable>() {
+          @Override
+          public void accept(Throwable throwable) throws Exception {
+            httpHandleProxy.handler(throwable);
+          }
+        });
   }
 
 
