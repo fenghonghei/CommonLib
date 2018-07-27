@@ -34,4 +34,14 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/bt_get_cache_expire"/>
 
+  <Button
+    android:id="@+id/bt_post_json"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:onClick="postForm"
+    android:text="POST上传表单"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/bt_get_cache_update"/>
+
 </android.support.constraint.ConstraintLayout>
