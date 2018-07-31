@@ -36,7 +36,7 @@ public interface CommonApi {
   Observable<HttpResponse> commonPost(@Url String url, @FieldMap Map<String, String> field);
 
   /**
-   * 图文混传
+   * 混传
    */
   @Multipart
   @POST
