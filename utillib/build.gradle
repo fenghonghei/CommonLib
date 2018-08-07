@@ -32,15 +32,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "com.yanzhenjie:permission:$rootProject.ext.permissionVersion"
-<<<<<<< HEAD
     api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     api "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.adapterRxjava2Version"
     api "com.squareup.retrofit2:converter-gson:$rootProject.ext.converterGsonVersion"
     api "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion"
-=======
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.adapterRxjava2Version"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.converterGsonVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion"
->>>>>>> 2b7bbae... add
 }
